@@ -14,6 +14,52 @@
 `define SLT   4'b1110
 `define BZ    4'b1111
 
-module control(op, jump, brach, aluop, accumwrite, regdst, memread, memwrite);
+module control(op, jump, brach, aluop, accwrite, accdst, memread, memwrite)
+    input [7:0] op;
 
+    output jump, brach, accwrite, memread, memwrite;
+    output [2:0] aluop;
+    output [1:0] accdst;
+
+    always @(op)
+        begin
+            if(op[7]==1)
+            begin
+                aluop<=op[6:4];
+                if(op==BZ)
+                begin
+                    brach<=1;
+                    memread<=1;
+                end
+                else
+                begin
+                    memread<=1;
+                    accdst<=2'b10;
+                    accwrite<=1;
+                end
+            end
+            else 
+            begin
+                case(op)
+                 JUMP:begin
+                          jump<=1;
+                          memread<=1;
+                      end
+                 SAVE:begin
+                          memwrite<=1;
+                      end
+                 LOAD:begin
+                          accdst<=2'b00
+                          accwrite<=1;
+                          memread<=1;
+                      end
+                  SLL:begin
+                          accdst<=2'b11;
+                          accwrite<=1;
+                      end
+                LOADI:begin
+                          accdst<=2'b01;
+                          accwrite<=1;
+                      end    
+            end    
 endmodule

@@ -17,7 +17,6 @@ module alu(op, a, b, ans, zero);
     output reg [7:0] ans;
     output zero;
     
-    assign zero = (ans == 0);
     always @(op, a, b)
         begin
             case(op)
@@ -27,7 +26,7 @@ module alu(op, a, b, ans, zero);
                 OR  : ans <= a | b;
                 XOR : ans <= a ^ b;
                 SLT : ans <= a <  b ? 1:0;
-                BZ  : ans <= a - b;
+                BZ  :zero <= a == 0 ? 1:0;
                 default: ans <= 8'bxxxx_xxxx;
         endcase
     end
