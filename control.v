@@ -19,7 +19,7 @@
 `define ALUtoAcc 2'b10
 `define SLLtoAcc 2'b11
 
-module control(op, jump, brach, aluop, accwrite, accdst, memread, memwrite)
+module control(op, jump, brach, aluop, accwrite, accdst, memread, memwrite);
     input [7:0] op;
 
     output jump, brach, accwrite, memread, memwrite;

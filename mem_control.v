@@ -1,7 +1,7 @@
 // Mem Control
 #include "mem/mem.v"
 
-module mem_control(write, read, clk, writedata, data, addr, rst)
+module mem_control(write, read, clk, writedata, data, addr, rst);
     input [7:0] writedata;
     input [3:0] addr;
     input write, read, clk, rst;
