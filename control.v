@@ -4,8 +4,8 @@
 `define JUMP  4'b0001
 `define SAVE  4'b0010
 `define LOAD  4'b0011
-`define SLL   4'b0100
-`define LOADI 4'b0101
+`define LOADI 4'b0100
+`define SLL   4'b0101
 `define ADD   4'b1000
 `define SUB   4'b1001
 `define AND   4'b1010
@@ -13,6 +13,11 @@
 `define XOR   4'b1100
 `define SLT   4'b1110
 `define BZ    4'b1111
+
+`define MemtoAcc 2'b00
+`define ImmtoAcc 2'b01
+`define ALUtoAcc 2'b10
+`define SLLtoAcc 2'b11
 
 module control(op, jump, brach, aluop, accwrite, accdst, memread, memwrite)
     input [7:0] op;
@@ -34,7 +39,7 @@ module control(op, jump, brach, aluop, accwrite, accdst, memread, memwrite)
                 else
                 begin
                     memread<=1;
-                    accdst<=2'b10;
+                    accdst<=ALUtoAcc;
                     accwrite<=1;
                 end
             end
@@ -49,17 +54,17 @@ module control(op, jump, brach, aluop, accwrite, accdst, memread, memwrite)
                           memwrite<=1;
                       end
                  LOAD:begin
-                          accdst<=2'b00
+                          accdst<=MemtoAcc;
                           accwrite<=1;
                           memread<=1;
                       end
-                  SLL:begin
-                          accdst<=2'b11;
-                          accwrite<=1;
-                      end
                 LOADI:begin
-                          accdst<=2'b01;
+                          accdst<=ImmtoAcc;
                           accwrite<=1;
                       end    
+                  SLL:begin
+                          accdst<=SLLtoAcc;
+                          accwrite<=1;
+                      end
             end    
 endmodule

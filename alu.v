@@ -8,7 +8,7 @@
 `define SLT 3'b110
 `define BZ  3'b111
 
-module alu(op, a, b, ans, zero);
+module alu(op, clk, a, b, ans, zero);
 
     input [7:0] a, b;
     input [2:0] op;
@@ -17,7 +17,7 @@ module alu(op, a, b, ans, zero);
     output reg [7:0] ans;
     output zero;
     
-    always @(op, a, b)
+    always @(clk)
         begin
             case(op)
                 ADD : ans <= a + b;
