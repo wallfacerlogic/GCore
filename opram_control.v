@@ -1,10 +1,10 @@
 // Opmem Control
 #include "opmem/opmem.v"
 
-module opmem_control(write, clk, writeop, op, addr, rst, oce);
+module opmem_control(write, writeop, clk, op, addr, rst);
     input [7:0] writeop;
     input [3:0] addr;
-    input write, clk, rst, oce;
+    input write, clk, rst;
 
     output [7:0] op;
 //--------Copy here to design--------
@@ -12,7 +12,7 @@ module opmem_control(write, clk, writeop, op, addr, rst, oce);
     opram opram(
         .dout(op), //output [7:0] dout
         .clk(clk), //input clk
-        .oce(oce), //input oce
+        .oce(!(write)), //input oce
         .ce(1), //input ce
         .reset(rst), //input reset
         .wre(write), //input wre

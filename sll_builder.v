@@ -1,6 +1,6 @@
 //SLL-Builder
 
-module sllbuilder(in, out):
+module sll_builder(in, out):
 
     input [7:0] in;
 

@@ -1,6 +1,6 @@
 // Imm-Builder
 
-module immbulider(in, out);
+module imm_bulider(in, out);
     input [3:0] in;
 
     output [7:0] out;
