@@ -1,4 +1,4 @@
-// Opmem Control
+// Opram Control
 #include "opram/opram.v"
 
 module opram_control(write, writeop, clk, op, addr, rst);
