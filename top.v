@@ -68,6 +68,16 @@ mem_control mem_control(
     .data(mem_data)
     ):
 
+imm_builder imm_builder(
+    .in(op[3:0]),
+    .out(imm_data)
+    );
+
+sll_builder sll_builder(
+    .in(acc_data),
+    .out(sll_data)
+    );
+
 mux mux(
     .a(mem_data),
     .b(imm_data),
