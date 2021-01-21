@@ -19,10 +19,10 @@
 `define ALUtoAcc 2'b10
 `define SLLtoAcc 2'b11
 
-module control(op, jump, brach, aluop, accwrite, accdst, memread, memwrite);
+module control(op, jump, branch, aluop, accwrite, accdst, memread, memwrite);
     input [7:0] op;
 
-    output jump, brach, accwrite, memread, memwrite;
+    output jump, branch, accwrite, memread, memwrite;
     output [2:0] aluop;
     output [1:0] accdst;
 
@@ -33,7 +33,7 @@ module control(op, jump, brach, aluop, accwrite, accdst, memread, memwrite);
                 aluop<=op[6:4];
                 if(op==BZ)
                 begin
-                    brach<=1;
+                    branch<=1;
                     memread<=1;
                 end
                 else

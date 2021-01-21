@@ -1,7 +1,7 @@
 // Opmem Control
-#include "opmem/opmem.v"
+#include "opram/opram.v"
 
-module opmem_control(write, writeop, clk, op, addr, rst);
+module opram_control(write, writeop, clk, op, addr, rst);
     input [7:0] writeop;
     input [3:0] addr;
     input write, clk, rst;

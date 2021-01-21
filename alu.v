@@ -17,7 +17,7 @@ module alu(op, clk, a, b, ans, zero);
     output reg [7:0] ans;
     output zero;
     
-    always @(clk)
+    always @(posedge clk)
         begin
             case(op)
                 ADD : ans <= a + b;
