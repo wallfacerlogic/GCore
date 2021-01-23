@@ -1,5 +1,6 @@
 // Mem Control
-#include "mem/mem.v"
+
+//`include "mem/mem.v"
 
 module mem_control(write, read, clk, writedata, data, addr, rst);
     input [7:0] writedata;
@@ -14,7 +15,7 @@ module mem_control(write, read, clk, writedata, data, addr, rst);
         .dout(data), //output [7:0] dout
         .clk(clk), //input clk
         .oce(read), //input oce
-        .ce(1), //input ce
+        .ce(1'b1), //input ce
         .reset(rst), //input reset
         .wre(write), //input wre
         .ad(addr), //input [1:0] ad

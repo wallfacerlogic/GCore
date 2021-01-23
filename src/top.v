@@ -1,17 +1,20 @@
 // CPU Top
 
 // -------- Include ----------
-#include "accum.v"
-#include "alu.v"
-#include "clock.v"
-#include "control.v"
-#include "imm_builder.v"
-#include "mem_control.v"
-#include "mux.v"
-#include "opam_control.v"
-#include "pc.v"
-#include "sll_builder.v"
+//`include "accum.v"
+//`include "alu.v"
+//`include "clock.v"
+//`include "control.v"
+//`include "imm_builder.v"
+//`include "mem_control.v"
+//`include "mux.v"
+//`include "opram_control.v"
+//`include "pc.v"
+//`include "sll_builder.v"
 // --------------------------
+
+
+module top(clk, rst, write, writeop,addr);
 
 // -------- I/O Set ---------
 // Control
@@ -25,9 +28,9 @@ input [7:0] addr;
 
 // Out
 output [7:0] acc_out;
-
-assign acc_out = acc_data;
 // --------------------------
+assign acc_out = acc_data;
+
 
 // ------- Module Set -------
 pc pc(
@@ -66,7 +69,7 @@ mem_control mem_control(
     .clk(clk), //!
     .rst(rst),
     .data(mem_data)
-    ):
+    );
 
 imm_builder imm_builder(
     .in(op[3:0]),
@@ -104,3 +107,4 @@ alu alu(
     .zero(zero)
     );
 // --------------------------
+endmodule

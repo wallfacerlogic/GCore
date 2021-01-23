@@ -1,5 +1,6 @@
 // Opram Control
-#include "opram/opram.v"
+
+//`include "opram/opram.v"
 
 module opram_control(write, writeop, clk, op, addr, rst);
     input [7:0] writeop;
@@ -13,7 +14,7 @@ module opram_control(write, writeop, clk, op, addr, rst);
         .dout(op), //output [7:0] dout
         .clk(clk), //input clk
         .oce(!(write)), //input oce
-        .ce(1), //input ce
+        .ce(1'b1), //input ce
         .reset(rst), //input reset
         .wre(write), //input wre
         .ad(add), //input [2:0] ad

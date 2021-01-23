@@ -7,6 +7,8 @@ module mux(a, b, c, d, sel, out);
     
     output [7:0] out;
     
+    reg [7:0] out;
+
     always @(a, b, c, d, sel)
         begin
             case(sel)
@@ -15,4 +17,6 @@ module mux(a, b, c, d, sel, out);
                 2'b10:out<=c;
                 2'b11:out<=d;
                 default:out <= 2'bxx;
+            endcase
+        end
 endmodule
